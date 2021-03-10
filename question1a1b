@@ -1,0 +1,82 @@
+//Question 1A
+#include<stdio.h>
+#include<iostream>
+
+using namespace std;
+
+/**
+* 두 정수 a와 b중 더 큰 값을 반환하는 함수
+*
+* @param a
+* @param b
+* @return a와 b중 더 큰 값
+*/
+int getMax(int a, int b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+
+int main()
+{
+	int p, q;
+	
+	scanf("%d %d", &p, &q);
+    
+    int answer = getMax(p, q);
+
+    printf("%d\n", answer);
+	return 0;
+}
+
+
+
+//Question 1B
+#include<stdio.h>
+#include<iostream>
+
+using namespace std;
+
+/**
+* 배열의 최대값을 계산하는 함수.
+*
+* @param data
+* @param n
+* @return data[0] ~ data[n-1]중 최대값.
+*/
+int getMax(int* data, int n)
+{
+  int answer = data[0];
+
+  for (int i = 0; i < n-1; i++)
+  {
+    if (data[i+1] > answer)
+      answer = data[i+1];
+  }
+	
+	return answer;
+}
+
+
+int main()
+{
+	int n;
+	int *data;
+
+	cin >> n;
+	data = new int[n];
+	
+	for (int i = 0; i < n; i++)
+	{
+		cin >> data[i];
+		//임시
+		//cout << "n = " << n <<"  ,  " << "i = " << i << " = " << data[i] << endl;
+	}
+	int answer = getMax(data, n);
+
+	printf("%d\n", answer);
+	delete[] data;
+	return 0;
+}
