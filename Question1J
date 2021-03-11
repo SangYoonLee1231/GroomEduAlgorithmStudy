@@ -1,0 +1,44 @@
+#include<cstdio>
+#include<iostream>
+
+using namespace std;
+
+
+/**
+* 1부터 N까지의 자연수의 합을 계산하는 함수
+* @param i
+* @return
+*/
+int getRangeSumFromOne(int n)
+{
+	int sum = 0;
+	
+	for (int i = 1; i <= n; i++)
+		sum += i;
+	
+	return sum;
+}
+
+
+long long getAnswer(int n)
+{
+	long long num = 0;
+	
+	for (int i = 1; i <= n; i++)
+		num += getRangeSumFromOne(i);
+	
+	return num;
+}
+
+int main()
+{
+	int n;
+
+	scanf("%d", &n);
+
+	long long answer = getAnswer(n);
+	
+	printf("%lld\n", answer);
+
+	return 0;
+}
