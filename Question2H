@@ -12,10 +12,7 @@ using namespace std;
 */
 int isInside(long long x, long long y, long long R)
 {
-	if ((x*x + y*y) < R*R)
-		return 1;
-	else
-		return 0;
+	return (x*x + y*y) < (R*R);
 }
 /*
 int countPixel (int R)
@@ -35,15 +32,17 @@ int countPixel (int R)
 
 long long countPixel (int R)
 {
-	long long count = 0;
+	long long count = R;
 	
-	for (int i = R; i < R; i++)
+	for (int i = 1; i < R; i++)
 	{
 		for (int j = R-1; j > -1; j--)
 		{
 			if (isInside(i, j, R))
+			{
 				count += j+1;
 				break;
+			}
 		}
 	}
 	
