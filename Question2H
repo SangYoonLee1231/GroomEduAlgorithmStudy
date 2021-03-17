@@ -1,0 +1,74 @@
+#include<cstdio>
+#include<iostream>
+
+using namespace std;
+
+/**
+* 왼쪽 아래 좌표가 (x,y)인 픽셀이 반지름 R인 원에 포함되는가?
+* @param x
+* @param y
+* @param R
+* @return  포함된다면 true, else false
+*/
+int isInside(long long x, long long y, long long R)
+{
+	if ((x*x + y*y) < R*R)
+		return 1;
+	else
+		return 0;
+}
+/*
+int countPixel (int R)
+{
+	int count = (R*(R + 1))/2;
+	
+	for (int i = 1; i < R; i++)
+	{
+		for (int j = R-1; i + j >= R; j--)
+		{
+			count += isInside(i, j, R);
+		}
+	}
+	return count*4;
+}
+*/
+
+long long countPixel (int R)
+{
+	long long count = 0;
+	
+	for (int i = R; i < R; i++)
+	{
+		for (int j = R-1; j > -1; j--)
+		{
+			if (isInside(i, j, R))
+				count += j+1;
+				break;
+		}
+	}
+	
+	return count*4;
+}
+
+void testcase(int caseIndex)
+{
+	long long R;
+	scanf("%lld", &R);
+
+	printf("#%d\n", caseIndex);
+	printf("%d\n", countPixel(R));
+}
+
+int main()
+{
+	int caseSize = 0;
+	
+	scanf("%d", &caseSize);
+	
+	for (int caseIndex = 1; caseIndex <= caseSize; caseIndex += 1)
+	{
+		testcase(caseIndex);
+	}
+	
+	return 0;
+}
